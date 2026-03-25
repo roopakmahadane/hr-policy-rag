@@ -9,11 +9,20 @@ from langchain_community.vectorstores import Chroma
 from langchain_core.messages import HumanMessage
 from fastapi import UploadFile, File, FastAPI
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
 
 app = FastAPI()
 llm = ChatAnthropic(model="claude-opus-4-6")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],  # your Next.js URL
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Shared embeddings — create once, reuse everywhere
 embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
