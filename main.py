@@ -18,7 +18,10 @@ llm = ChatAnthropic(model="claude-opus-4-6")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # your Next.js URL
+    allow_origins=[
+        "http://localhost:3000",
+        "https://hr-policy-rag.vercel.app"  # ← add this!
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
