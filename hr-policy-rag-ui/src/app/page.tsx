@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 const API = "https://web-production-2ee08.up.railway.app"
 
@@ -13,6 +13,18 @@ export default function Home() {
   const [answer, setAnswer] = useState("")
   const [sources, setSources] = useState<string[]>([])
   const [asking, setAsking] = useState(false)
+
+  useEffect(() => {
+    // Create a repeating timer
+    const ping = setInterval(() => {
+      // Every 5 minutes, send a tiny request
+      // to keep Railway awake
+      fetch('https://web-production-2ee08.up.railway.app/health')
+    }, 5 * 60 * 1000) // 5 mins in milliseconds
+  
+    // Clean up timer when page closes
+    return () => clearInterval(ping)
+  }, []) // [] means run once on page load
 
   async function handleUpload() {
     if (!file) return
