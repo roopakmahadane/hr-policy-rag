@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 
-const API = "http://localhost:8000"
+const API = "https://web-production-2ee08.up.railway.app"
 
 export default function Home() {
   const [file, setFile] = useState<File | null>(null)
