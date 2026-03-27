@@ -1,4 +1,4 @@
-Live demo: hr-policy-rag.vercel.app
+
 
 # HR Policy RAG System
 
@@ -27,3 +27,5 @@ with source citations.
 ## Endpoints
 - POST /upload — Upload and process PDF
 - POST /ask — Ask questions about the document
+
+Live demo: hr-policy-rag.vercel.app
